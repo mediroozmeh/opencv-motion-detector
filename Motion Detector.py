@@ -57,7 +57,7 @@ MOVEMENT_DETECTED_PERSISTENCE = 100
 
 
 # Create capture object
-cap = cv2.VideoCapture(5) # Flush the stream
+cap = cv2.VideoCapture(0) # Flush the stream
 cap.release()
 cap = cv2.VideoCapture(0) # Then start the webcam
 
@@ -115,7 +115,7 @@ while True:
 
     # Fill in holes via dilate(), and find contours of the thesholds
     thresh = cv2.dilate(thresh, None, iterations = 2)
-    _, cnts, _ = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts, _ = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # loop over the contours
     for c in cnts:
